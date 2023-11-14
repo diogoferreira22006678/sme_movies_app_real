@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "253727189849",
+    "project_id": "sme-movies-app-afe16",
+    "storage_bucket": "sme-movies-app-afe16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253727189849:android:d1f8f69d96f98e8c037a48",
+        "android_client_info": {
+          "package_name": "com.example.sme_movies_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDXVMsHRGLlLuCBFc7VM6swTEjAbuOUps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
