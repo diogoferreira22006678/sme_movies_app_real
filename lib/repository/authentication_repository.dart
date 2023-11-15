@@ -32,6 +32,13 @@ class AuthenticationRepository {
         .map((user) => user.user?.toUser)
         .single;
   }
+  Future<User?> createUserWithEmailPassword(
+          {required String email, required String password}) =>
+      _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .asStream()
+          .map((user) => user.user?.toUser)
+          .single;
 }
 
 extension on firebase_auth.User {

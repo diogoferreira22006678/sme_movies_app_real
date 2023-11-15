@@ -37,8 +37,11 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 8),
           _PasswordInput(),
           const SizedBox(height: 8),
-          _LoginButton()
+          _LoginButton(),
+          const SizedBox(height: 8),
+          _SignUpButton()
         ])),
+        
       );
 }
 
@@ -93,4 +96,14 @@ class _LoginButton extends StatelessWidget {
                       context.read<LoginFormCubit>().loginWithEmailPassword()
                   : null,
               child: const Text('Login')));
+}
+
+class _SignUpButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => TextButton(
+        key: const Key('login_form_register_button'),
+        onPressed: () => Navigator.of(context).push<void>(RegisterPage.route()),
+        style: TextButton.styleFrom(backgroundColor: Colors.amberAccent),
+        child: const Text('Create account'),
+      );
 }
