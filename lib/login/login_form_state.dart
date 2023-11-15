@@ -7,13 +7,13 @@ import 'package:sme_movies_app/form_fields/password.dart';
 class LoginFormState extends Equatable {
   final Email email;
   final Password password;
-  final FormzSubmissionStatus status;
+  final FormzStatus status;
   final String errorMessage;
 
   const LoginFormState(
       {this.email = const Email.pure(),
       this.password = const Password.pure(),
-      this.status = FormzSubmissionStatus
+      this.status = FormzStatus.pure,
       this.errorMessage = ''});
 
   @override
@@ -24,7 +24,7 @@ class LoginFormState extends Equatable {
   LoginFormState copyWith(
           {Email? email,
           Password? password,
-          FormzSubmissionStatus? status,
+          FormzStatus? status,
           String? errorMessage}) =>
       LoginFormState(
           email: email ?? this.email,
