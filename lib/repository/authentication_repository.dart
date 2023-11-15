@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
-import 'package:sme_movies_app/business/models/user.dart';
+import 'package:sme_movies_app/models/user.dart';
 
 class AuthenticationRepository {
   final firebase_auth.FirebaseAuth _firebaseAuth;
@@ -22,6 +22,15 @@ class AuthenticationRepository {
 
   User get currentUser {
     return _cache.read<User>(key: userCacheKey) ?? User.empty;
+  }
+
+  Future<User?> loginWithEmailPassword(
+      {required String email, required String password}) async {
+    return _firebaseAuth
+        .signInWithEmailAndPassword(email: email, password: password)
+        .asStream()
+        .map((user) => user.user?.toUser)
+        .single;
   }
 }
 
@@ -46,3 +55,4 @@ class CacheClient {
     return null;
   }
 }
+

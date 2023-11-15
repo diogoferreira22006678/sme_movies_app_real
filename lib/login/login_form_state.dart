@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:sme_movies_app/validators/email.dart';
-import 'package:sme_movies_app/validators/password.dart';
+import 'package:sme_movies_app/form_fields/email.dart';
+import 'package:sme_movies_app/form_fields/password.dart';
 
 class LoginFormState extends Equatable {
   final Email email;
