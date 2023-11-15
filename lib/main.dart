@@ -4,7 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sme_movies_app/repository/authentication_repository.dart';
 import 'package:sme_movies_app/login/login_form.dart';
 import 'package:sme_movies_app/login/login_form_cubit.dart';
-
+import 'package:sme_movies_app/app/app_cubit.dart';
+import 'package:sme_movies_app/app/app_state.dart';
+import 'package:sme_movies_app/movies/movies_page.dart';
+import 'package:sme_movies_app/login/login_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -17,15 +20,17 @@ void main() async {
 class MyApp extends StatelessWidget {
   final AuthenticationRepository _authenticationRepository;
 
-  MyApp({super.key, required AuthenticationRepository authenticationRepository})
+  const MyApp(
+      {super.key, required AuthenticationRepository authenticationRepository})
       : _authenticationRepository = authenticationRepository;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) => RepositoryProvider.value(
         value: _authenticationRepository,
-        child: BlocProvider<LoginFormCubit>(
-          create: (_) => LoginFormCubit(_authenticationRepository),
+        child: BlocProvider<AppCubit>(
+          create: (_) =>
+              AppCubit(authenticationRepository: _authenticationRepository),
           child: const MyHomePage(),
         ),
       );
@@ -36,13 +41,15 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Movies App',
-        home: Scaffold(
-          appBar: AppBar(title: const Text("Movies App")),
-          body: const Padding(
-            padding: EdgeInsets.all(16),
-            child: LoginForm(),
-          ),
+        home: BlocListener<AppCubit, AppState>(
+          listener: (context, state) {
+            if (state.status == AppStatus.authenticated) {
+              Navigator.of(context).pushReplacement(MoviesPage.route());
+            } else {
+              Navigator.of(context).pushReplacement(LoginPage.route());
+            }
+          },
+          child: const Center(child: CircularProgressIndicator()),
         ),
         theme: ThemeData(
           primarySwatch: Colors.green,

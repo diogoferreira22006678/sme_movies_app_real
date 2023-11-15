@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:sme_movies_app/login/login_form_cubit.dart';
 import 'package:sme_movies_app/login/login_form_state.dart';
+import 'package:sme_movies_app/register/register_page.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
