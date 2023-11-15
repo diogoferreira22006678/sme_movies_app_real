@@ -45,7 +45,7 @@ class MoviesPage extends StatelessWidget {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              // Handle the action when the FloatingActionButton is pressed
+              Navigator.of(context).push<void>(MovieAddPage.route()),
             },
             child: const Icon(Icons.add),
           ),
