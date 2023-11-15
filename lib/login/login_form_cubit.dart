@@ -1,9 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:sme_movies_app/repository/authentication_repository.dart';
+import 'package:sme_movies_app/form_fields/email.dart';
 import 'package:sme_movies_app/form_fields/password.dart';
-
-import '../repository/authentication_repository.dart';
-import '../form_fields/email.dart';
 import 'login_form_state.dart';
 
 class LoginFormCubit extends Cubit<LoginFormState> {
