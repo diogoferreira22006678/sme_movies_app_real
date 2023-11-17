@@ -6,7 +6,7 @@ import 'movie_add_form.dart';
 import 'movie_add_form_cubit.dart';
 
 class MovieAddPage extends StatelessWidget {
-  const MovieAddPage({Key? key});
+  const MovieAddPage({Key? key}) : super(key: key);
 
   static Route<void> route() {
     return MaterialPageRoute<void>(builder: (_) => const MovieAddPage());

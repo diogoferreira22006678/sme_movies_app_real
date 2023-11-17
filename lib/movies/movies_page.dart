@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sme_movies_app/crudMovie/movie_add_page.dart';
 
 import '../repository/movies_repository.dart';
 import '../models/movies.dart';
@@ -45,7 +46,7 @@ class MoviesPage extends StatelessWidget {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              Navigator.of(context).push<void>(MovieAddPage.route()),
+              Navigator.of(context).push<void>(MovieAddPage.route());
             },
             child: const Icon(Icons.add),
           ),

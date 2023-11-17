@@ -18,7 +18,13 @@ class AppCubit extends Cubit<AppState> {
               : const AppState.unauthenticated(),
         ) {
     _userSubscription = _authenticationRepository.user.listen(
-      (user) => emit(AppState.authenticated(user)),
+       (user) {
+        if (user.isEmpty) {
+          emit(AppState.authenticated(user));
+        } else {
+          emit(AppState.unauthenticated());
+        }
+      },
     );
   }
 
